@@ -4,7 +4,8 @@ using UnityEngine;
 namespace GameManager{
     public class GameManager : MonoBehaviour
 {
-    public static int[][] blocklist = {new int[]{2,-1}};
+    public static int[][] blocklist = {new int[]{1,-1}};
+    public static int[][] walllist = {new int[]{2,-1}};
     // Start is called before the first frame update
     void Start()
     {

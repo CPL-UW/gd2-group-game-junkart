@@ -17,10 +17,20 @@ public class CharacterController : MonoBehaviour
                     return;
                 }
             }
+            foreach(int[] block in GameManager.GameManager.walllist){
+                if(position.y == block[1] && position.x-speed == block[0]){
+                    return;
+                }
+            }
             position.x -= speed;
         }
         if(Input.GetKeyDown(KeyCode.D)){
             foreach(int[] block in GameManager.GameManager.blocklist){
+                if(position.y == block[1] && position.x+speed == block[0]){
+                    return;
+                }
+            }
+            foreach(int[] block in GameManager.GameManager.walllist){
                 if(position.y == block[1] && position.x+speed == block[0]){
                     return;
                 }
@@ -33,6 +43,11 @@ public class CharacterController : MonoBehaviour
                     return;
                 }
             }
+            foreach(int[] block in GameManager.GameManager.walllist){
+                if(position.x == block[0] && position.y+speed == block[1]){
+                    return;
+                }
+            }
             position.y += speed;
         }
         if(Input.GetKeyDown(KeyCode.S)){
@@ -41,10 +56,15 @@ public class CharacterController : MonoBehaviour
                     return;
                 }
             }
+            foreach(int[] block in GameManager.GameManager.walllist){
+                if(position.x == block[0] && position.y-speed == block[1]){
+                    return;
+                }
+            }
             position.y -= speed;
         }
         transform.position = position;
-        Debug.Log(position.x+"\n"+position.y);
+        //Debug.Log(position.x+"\n"+position.y);
     }
     // Start is called before the first frame update
     void Start()
