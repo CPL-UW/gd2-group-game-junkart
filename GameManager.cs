@@ -19,14 +19,14 @@ namespace GameManager{
     }
     public static bool checker(){
         
-        if(CharacterController.CharacterController.moved){
+        if(CharacterController.CharacterController.moved == 0){
             //Debug.Log("aa");
             //if()
             //move(0);
             if(move(0)){
                 //moved = false;
-                CharacterController.CharacterController.moved = false;                
-                //Debug.Log(round++);
+                CharacterController.CharacterController.moved = 3;                
+                Debug.Log(round++);
                 return true;
             }
             
@@ -37,7 +37,7 @@ namespace GameManager{
     public static bool move(int index){
         if(Input.GetKeyDown(KeyCode.LeftArrow)){
             blocklist[index][0]--;
-            Debug.Log("did");
+            //Debug.Log("did");
             return true;
         }
         if(Input.GetKeyDown(KeyCode.RightArrow)){
@@ -60,7 +60,7 @@ namespace GameManager{
         //Debug.Log(CharacterController.CharacterController.step);
         //CharacterController.CharacterController.move();
         //Debug.Log(checker());
-        checker();
+        //checker();
 
     }
 }
