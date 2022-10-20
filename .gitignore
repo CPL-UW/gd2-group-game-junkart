@@ -3,12 +3,21 @@
 # Get latest from https://github.com/github/gitignore/blob/master/Unity.gitignore
 #
 [Ll]ibrary/
+<<<<<<< HEAD
 [Tt]emp/
 [Oo]bj/
 [Bb]uild/
 [Bb]uilds/
 [Ll]ogs/
 [Mm]emoryCaptures/
+=======
+/[Tt]emp/
+/[Oo]bj/
+/[Bb]uild/
+/[Bb]uilds/
+/[Ll]ogs/
+/[Mm]emoryCaptures/
+>>>>>>> 0329665f45659f7db8f36e871973f8ea56d07634
 
 # Asset meta data should only be ignored when the corresponding asset is also ignored
 !/[Aa]ssets/**/*.meta
@@ -58,3 +67,5 @@ sysinfo.txt
 # Crashlytics generated file
 crashlytics-build.properties
 
+.idea/
+.DS_Store
