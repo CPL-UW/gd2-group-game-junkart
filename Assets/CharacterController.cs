@@ -115,10 +115,11 @@ public class CharacterController : MonoBehaviour
             move();
             starter = false;
         }
-        if(GameManager.GameManager.step != 0){
-            move();
+        if(GameManager.GameManager.step == 0 || Input.GetKeyDown(KeyCode.Space)){
+            GameManager.GameManager.step = 0;
+            GameManager.GameManager.checker();    
         }else{
-            GameManager.GameManager.checker();
+            move();
         }
         
     }
