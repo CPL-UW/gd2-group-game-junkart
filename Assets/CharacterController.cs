@@ -27,7 +27,7 @@ public class CharacterController : MonoBehaviour
                 }
             }
             foreach(int[] block in GameManager.GameManager.walllist){
-                if(position.y == block[1] && position.x-speed == block[0]){
+                if(position.y == (float)block[1]/2f   && position.x-speed == (float)block[0]/2f){
                     done = 0;
                 }
             }
@@ -46,7 +46,7 @@ public class CharacterController : MonoBehaviour
                 }
             }
             foreach(int[] block in GameManager.GameManager.walllist){
-                if(position.y == block[1] && position.x+speed == block[0]){
+                if(position.y == (float)block[1]/2f && position.x+speed == (float)block[0]/2f){
                     done = 0;
                 }
             }
@@ -63,7 +63,7 @@ public class CharacterController : MonoBehaviour
                 }
             }
             foreach(int[] block in GameManager.GameManager.walllist){
-                if(position.x == block[0] && position.y+speed == block[1]){
+                if(position.x == (float)block[0]/2f && position.y+speed == (float)block[1]/2f){
                     done = 0;
                 }
             }
@@ -81,7 +81,7 @@ public class CharacterController : MonoBehaviour
                 }
             }
             foreach(int[] block in GameManager.GameManager.walllist){
-                if(position.x == block[0] && position.y-speed == block[1]){
+                if(position.x == (float)block[0]/2f && position.y-speed == (float)block[1]/2f){
                     done = 0;
                 }
             }
