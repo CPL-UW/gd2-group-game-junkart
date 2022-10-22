@@ -9,7 +9,7 @@ public class CharacterController : MonoBehaviour
 {
     public static float speed = 0.5f;
     //public static int moved = 3;
-    public bool starter = true;
+    
     // Control the moves
     public void move(){
         
@@ -114,17 +114,7 @@ public class CharacterController : MonoBehaviour
     void Update()
     {
         
-        if(starter){
-            Debug.Log("start");
-            move();
-            starter = false;
-        }
-        if(GameManager.GameManager.step == 0 || Input.GetKeyDown(KeyCode.Space)){
-            GameManager.GameManager.step = 0;
-            GameManager.GameManager.checker();    
-        }else{
-            move();
-        }
+        
         
     }
 }

@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using CharacterController;
+using System;
 namespace GameManager{
     public class GameManager : MonoBehaviour
 {   
@@ -14,7 +15,9 @@ namespace GameManager{
                                     new int[]{4,-6, 0}, new int[]{4,-5, 0}, new int[]{4,-5, 0}, new int[]{4,-4, 0}, new int[]{4,-3, 0}, new int[]{4,-2, 0}, new int[]{5,-2, 0}, new int[]{5,-1, 0}, new int[]{5, 0, 0}, new int[]{5,1, 0}, new int[]{5,2, 0}, new int[]{5,3, 0}, new int[]{5,4, 0}, new int[]{5,5, 0}, 
                                     new int[]{-4,5, 0}, new int[]{-3,5, 0}, new int[]{-2,5, 0}, new int[]{-1,5, 0}, new int[]{0,5, 0}, new int[]{1,5, 0}, new int[]{2,5, 0}, new int[]{3,5, 0}, new int[]{4,5, 0}};
     public static int round;
-    public static int step = 1000;
+    public static int step = 3;
+    public static int avatar_index;
+    public bool starter = true;
     // Start is called before the first frame update
     void Start()
     {
@@ -28,9 +31,12 @@ namespace GameManager{
             //if()
             //move(0);
             if(move(0)){
+                Debug.Log(blocklist[0][0]/2f+"  "+blocklist[0][1]/2f);
                 //moved = false;
                 step = 3;                
-                Debug.Log(round++);
+                //Debug.Log(round++);
+                avatar_index = new System.Random().Next(1,4);
+                //Debug.Log(avatar_index);
                 return true;
             }
             
@@ -61,6 +67,44 @@ namespace GameManager{
     // Update is called once per frame
     void Update()
     {   
+        if(starter){
+            Debug.Log("start");
+            avatar_index = new System.Random().Next(1,4);
+            //switch 
+                    //GameObject.Find("Avatar_1").GetComponent<CharacterController.CharacterController>().move();
+
+            switch(avatar_index){
+                case 1:
+                    GameObject.Find("Avatar_1").GetComponent<CharacterController.CharacterController>().move();
+                    break;
+                case 2:
+                    GameObject.Find("Avatar_2").GetComponent<CharacterController.CharacterController>().move();
+                    break;
+                case 3:
+                    GameObject.Find("Avatar_3").GetComponent<CharacterController.CharacterController>().move();
+                    break;
+            }
+            
+            starter = false;
+        }
+        if(step == 0 || Input.GetKeyDown(KeyCode.Space)){
+            step = 0;
+            checker();    
+        }else{
+                                //GameObject.Find("Avatar_1").GetComponent<CharacterController.CharacterController>().move();
+
+            switch(avatar_index){
+                case 1:
+                    GameObject.Find("Avatar_1").GetComponent<CharacterController.CharacterController>().move();
+                    break;
+                case 2:
+                    GameObject.Find("Avatar_2").GetComponent<CharacterController.CharacterController>().move();
+                    break;
+                case 3:
+                    GameObject.Find("Avatar_3").GetComponent<CharacterController.CharacterController>().move();
+                    break;
+            }
+        }
         //Debug.Log(CharacterController.CharacterController.step);
         //CharacterController.CharacterController.move();
         //Debug.Log(checker());
