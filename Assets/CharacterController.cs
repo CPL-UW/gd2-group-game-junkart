@@ -8,21 +8,15 @@ namespace CharacterController{
 public class CharacterController : MonoBehaviour
 {
     public static float speed = 0.5f;
-    //public static int moved = 3;
     
     // Control the moves
     public void move(){
-        
-            //Debug.Log("Charactor 1");
             Vector2 position = transform.position;
             int done = 1;
             if(Input.GetKeyDown(KeyCode.A)){
                 done = 2;
             foreach(int[] block in GameManager.GameManager.blocklist){
-                // Debug.Log((float)block[0]/2);
-                // Debug.Log(position.x-speed+"aaa");
-                if(position.y == (float)block[1]/2f   && position.x-speed == (float)block[0]/2f){
-                    
+                if(position.y == (float)block[1]/2f   && position.x-speed == (float)block[0]/2f){                  
                     done = 0;
                 }
             }
@@ -95,7 +89,6 @@ public class CharacterController : MonoBehaviour
             GameManager.GameManager.step--;
             transform.position = position;
             Debug.Log(position.x+" : "+ position.y);
-            //Debug.Log(GameManager.GameManager.step);
         }
         else if(done==0){
             move();

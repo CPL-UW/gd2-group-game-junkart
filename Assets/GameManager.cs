@@ -18,26 +18,65 @@ namespace GameManager{
     public static int round;
     public static int step = 3;
     public static int avatar_index;
+    public static int color = -1;
+    public static ArrayList tmpblock;
     public bool starter = true;
     // Start is called before the first frame update
     void Start()
     {
         round = 1;
-        //CharacterController.CharacterController.move();
+
     }
     public static bool checker(){
         
         if(step == 0){
-            //Debug.Log("aa");
-            //if()
-            //move(0);
+
+
+            int counter = 0;
+            /**
+            *
+            *   Trigger for random generating colored dice, goto line 36
+            *                           ||
+            *                         \ || /
+            *                           \/
+            **/
+            //color = new System.Random().Next(0,4);
+            color = 1;
+            if(color != -1){
+                //Debug.Log(color);
+                tmpblock = new ArrayList();
+                foreach(int[] block in blocklist){
+                    if(block[2] == color){
+                        tmpblock.Add(block);
+                    }
+                }
+
+                /**
+                *   need a wait until lock here below
+                */
+                //if(Input.GetKeyDown(KeyCode.RightArrow)){
+                    Vector2 position = GameObject.Find("BlockPointer").GetComponent<Transform>().position;
+                    position.x = ((int[]) tmpblock[counter])[0]+0.75f;
+                    position.y = ((int[]) tmpblock[counter])[1]-0.25f;
+                    Debug.Log(((int[]) tmpblock[0])[0]);
+                    GameObject.Find("BlockPointer").GetComponent<Transform>().position = position;
+                    //counter++;
+                //}
+            }
+
             if(move(0)){
                 Debug.Log(blocklist[0][0]/2f+"  "+blocklist[0][1]/2f);
-                //moved = false;
-                step = 3;                
-                //Debug.Log(round++);
+                step = 3;
+            /**
+            *
+            *   Trigger for random generating colored dice, roll a dice to pick up an avatar
+            *                           ||
+            *                         \ || /
+            *                           \/
+            **/                
                 avatar_index = new System.Random().Next(1,4);
-                //Debug.Log(avatar_index);
+                color = -1;
+                tmpblock = null;
                 return true;
             }
             
@@ -48,7 +87,6 @@ namespace GameManager{
     public static bool move(int index){
         if(Input.GetKeyDown(KeyCode.LeftArrow)){
             blocklist[index][0]--;
-            //Debug.Log("did");
             return true;
         }
         if(Input.GetKeyDown(KeyCode.RightArrow)){
@@ -71,9 +109,6 @@ namespace GameManager{
         if(starter){
             Debug.Log("start");
             avatar_index = new System.Random().Next(1,4);
-            //switch 
-                    //GameObject.Find("Avatar_1").GetComponent<CharacterController.CharacterController>().move();
-
             switch(avatar_index){
                 case 1:
                     GameObject.Find("Avatar_1").GetComponent<CharacterController.CharacterController>().move();
@@ -92,8 +127,6 @@ namespace GameManager{
             step = 0;
             checker();    
         }else{
-                                //GameObject.Find("Avatar_1").GetComponent<CharacterController.CharacterController>().move();
-
             switch(avatar_index){
                 case 1:
                     GameObject.Find("Avatar_1").GetComponent<CharacterController.CharacterController>().move();
@@ -106,11 +139,6 @@ namespace GameManager{
                     break;
             }
         }
-        //Debug.Log(CharacterController.CharacterController.step);
-        //CharacterController.CharacterController.move();
-        //Debug.Log(checker());
-        //checker();
-
     }
 }
 }
