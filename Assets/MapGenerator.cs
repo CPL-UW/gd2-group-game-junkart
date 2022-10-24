@@ -28,6 +28,20 @@ public class MapGenerator : MonoBehaviour
             }
         }
         foreach(int[] block in GameManager.GameManager.blocklist){
+            //switch(block[2]){
+                //case 0:
+                    //tile.SetTile(new Vector3Int(block[0], block[1],0), Resources.Load<Tile>("REDBLOCK"));
+                    //break;
+                //case 1:
+                    //tile.SetTile(new Vector3Int(block[0], block[1],0), Resources.Load<Tile>("PINKBLOCK"));
+                    //break;
+                //case 2:
+                    //tile.SetTile(new Vector3Int(block[0], block[1],0), Resources.Load<Tile>("GREENBLOCK"));
+                    //break;
+                //case 3:
+                    //tile.SetTile(new Vector3Int(block[0], block[1],0), Resources.Load<Tile>("YELLOWBLOCK"));
+                    //break;
+            //}
             tile.SetTile(new Vector3Int(block[0], block[1],0), Resources.Load<Tile>("TestBlock"));
         }
         foreach(int[] block in GameManager.GameManager.walllist){
