@@ -9,8 +9,9 @@ namespace GameManager{
     public static int[] Xbound = new int[]{-7,7};
     public static int[] Ybound = new int[]{-7,7};
     /* 0: red, 1: pink, 2: green, 3: yellow */
+    /* block: int[]{Xpos, Ypos, Color} */
     public static int[][] blocklist = {new int[]{1,1,0}, new int[]{-1,1,1}, new int[]{-3,1,2}, new int[]{3,1,3}, new int[]{-1,-2,2}, new int[]{1,-2,0}, new int[]{-1,-4,1}, new int[]{1,-4,3}};
-    /* wall: int[]{Xpos, Ypos, Color} */
+    
     public static int[][] walllist = {new int[]{-3,-6}, new int[]{-2,-6}, new int[]{-1,-6}, new int[]{0,-6}, new int[]{1,-6}, new int[]{2,-6}, new int[]{3,-6},
                                     new int[]{-4,-6}, new int[]{-4,-5}, new int[]{-4,-5}, new int[]{-4,-4}, new int[]{-4,-3}, new int[]{-4,-2}, new int[]{-5,-2}, new int[]{-5,-1}, new int[]{-5, 0}, new int[]{-5,1}, new int[]{-5,2}, new int[]{-5,3}, new int[]{-5,4}, new int[]{-5,5}, 
                                     new int[]{4,-6}, new int[]{4,-5}, new int[]{4,-5}, new int[]{4,-4}, new int[]{4,-3}, new int[]{4,-2}, new int[]{5,-2}, new int[]{5,-1}, new int[]{5, 0}, new int[]{5,1}, new int[]{5,2}, new int[]{5,3}, new int[]{5,4}, new int[]{5,5}, 
@@ -41,7 +42,7 @@ namespace GameManager{
             *                           \/
             **/
             //color = new System.Random().Next(0,4);
-            color = 1;
+            color = 2;
             if(color != -1){
                 //Debug.Log(color);
                 tmpblock = new ArrayList();
@@ -58,7 +59,7 @@ namespace GameManager{
                     Vector2 position = GameObject.Find("BlockPointer").GetComponent<Transform>().position;
                     position.x = ((int[]) tmpblock[counter])[0]+0.75f;
                     position.y = ((int[]) tmpblock[counter])[1]-0.25f;
-                    Debug.Log(((int[]) tmpblock[0])[0]);
+                    //Debug.Log(((int[]) tmpblock[0])[0]);
                     GameObject.Find("BlockPointer").GetComponent<Transform>().position = position;
                     //counter++;
                 //}
