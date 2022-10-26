@@ -10,7 +10,7 @@ namespace GameManager{
     public static int[] Ybound = new int[]{-7,7};
     /* 0: red, 1: pink, 2: green, 3: yellow */
     /* block: int[]{Xpos, Ypos, Color} */
-    public static int[][] blocklist = {new int[]{1,1,0}, new int[]{-1,1,1}, new int[]{-3,1,2}, new int[]{3,1,3}, new int[]{-1,-2,2}, new int[]{1,-2,0}, new int[]{-1,-4,1}, new int[]{1,-4,3}};
+    public static int[][] blocklist = {new int[]{1,1,2}, new int[]{-1,1,1}, new int[]{-3,1,0}, new int[]{3,1,3}, new int[]{-1,-2,2}, new int[]{1,-2,0}, new int[]{-1,-4,1}, new int[]{1,-4,3}};
     
     public static int[][] walllist = {new int[]{-3,-6}, new int[]{-2,-6}, new int[]{-1,-6}, new int[]{0,-6}, new int[]{1,-6}, new int[]{2,-6}, new int[]{3,-6},
                                     new int[]{-4,-6}, new int[]{-4,-5}, new int[]{-4,-5}, new int[]{-4,-4}, new int[]{-4,-3}, new int[]{-4,-2}, new int[]{-5,-2}, new int[]{-5,-1}, new int[]{-5, 0}, new int[]{-5,1}, new int[]{-5,2}, new int[]{-5,3}, new int[]{-5,4}, new int[]{-5,5}, 
@@ -22,6 +22,9 @@ namespace GameManager{
     public static int color = -1;
     public static ArrayList tmpblock;
     public bool starter = true;
+    public static int counter = 0;
+    public static bool cursored = false;
+    public static int index = 0;
     // Start is called before the first frame update
     void Start()
     {
@@ -33,7 +36,7 @@ namespace GameManager{
         if(step == 0){
 
 
-            int counter = 0;
+            
             /**
             *
             *   Trigger for random generating colored dice, goto line 36
@@ -42,7 +45,7 @@ namespace GameManager{
             *                           \/
             **/
             //color = new System.Random().Next(0,4);
-            color = 2;
+            color = 0;
             if(color != -1){
                 //Debug.Log(color);
                 tmpblock = new ArrayList();
@@ -51,22 +54,48 @@ namespace GameManager{
                         tmpblock.Add(block);
                     }
                 }
-
+            cursor(tmpblock, counter);
                 /**
                 *   need a wait until lock here below
                 */
                 //if(Input.GetKeyDown(KeyCode.RightArrow)){
-                    Vector2 position = GameObject.Find("BlockPointer").GetComponent<Transform>().position;
-                    position.x = ((int[]) tmpblock[counter])[0]+0.75f;
-                    position.y = ((int[]) tmpblock[counter])[1]-0.25f;
-                    //Debug.Log(((int[]) tmpblock[0])[0]);
-                    GameObject.Find("BlockPointer").GetComponent<Transform>().position = position;
-                    //counter++;
+                    // Vector2 position = GameObject.Find("BlockPointer").GetComponent<Transform>().position;
+                    // position.x = ((int[]) tmpblock[counter])[0]/2f;
+                    // position.y = ((int[]) tmpblock[counter])[1]/2f;
+                    // //Debug.Log(((int[]) tmpblock[0])[0]);
+                    // GameObject.Find("BlockPointer").GetComponent<Transform>().position = position;
+                    //cursor(tmpblock, counter);
                 //}
             }
-
-            if(move(0)){
-                Debug.Log(blocklist[0][0]/2f+"  "+blocklist[0][1]/2f);
+            
+            if(Input.GetKeyDown(KeyCode.Return)){
+                cursored = true;
+                Vector2 position = GameObject.Find("BlockPointer").GetComponent<Transform>().position;
+                for(int i = 0; i< blocklist.Length; i++){
+                    if(blocklist[i][0]/2f == position.x && blocklist[i][1]/2f == position.y){
+                        index = i;
+                    }
+                }
+            }
+            if(!cursored){
+                if(Input.GetKeyDown(KeyCode.RightArrow)){
+                    if(counter == tmpblock.Count-1){
+                        counter = 0;
+                    }else{
+                        counter++;
+                    }   
+                }
+                if(Input.GetKeyDown(KeyCode.LeftArrow)){
+                    if(counter == 0){
+                        counter = tmpblock.Count-1;
+                    }else{
+                        counter--;
+                    }   
+                }
+            }else{
+                Debug.Log(index);
+                if( cursor(tmpblock, counter) && move(index) &&  cursor(tmpblock, counter)){
+                //Debug.Log(blocklist[0][0]/2f+"  "+blocklist[0][1]/2f);
                 step = 3;
             /**
             *
@@ -78,11 +107,26 @@ namespace GameManager{
                 avatar_index = new System.Random().Next(1,4);
                 color = -1;
                 tmpblock = null;
+                //counter++;
+                round++;
+                cursored=false;
+                index = 0;
                 return true;
             }
+            }
+
+           
             
         }
         return false;
+    }
+    public static bool cursor(ArrayList tmpblock, int counter){
+        Vector2 position = GameObject.Find("BlockPointer").GetComponent<Transform>().position;
+        position.x = ((int[]) tmpblock[counter])[0]/2f;
+        position.y = ((int[]) tmpblock[counter])[1]/2f;
+        //Debug.Log(((int[]) tmpblock[0])[0]);
+        GameObject.Find("BlockPointer").GetComponent<Transform>().position = position;
+        return true;
     }
 
     public static bool move(int index){

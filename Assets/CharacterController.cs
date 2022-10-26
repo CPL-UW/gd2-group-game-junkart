@@ -88,7 +88,7 @@ public class CharacterController : MonoBehaviour
         if(done == 2){
             GameManager.GameManager.step--;
             transform.position = position;
-            Debug.Log(position.x+" : "+ position.y);
+            //Debug.Log(position.x+" : "+ position.y);
         }
         else if(done==0){
             move();
