@@ -25,10 +25,19 @@ namespace GameManager{
     public static int counter = 0;
     public static bool cursored = false;
     public static int index = 0;
+    public static int[][] originBlock;
     // Start is called before the first frame update
     void Start()
     {
         round = 1;
+        originBlock = new int[blocklist.Length][];
+        int ct = 0;
+        foreach(int[] block in blocklist){
+            originBlock[ct] = new int[]{block[0], block[1], block[2]};
+            // originBlock[ct][1] = block[1];
+            // originBlock[ct][2] = block[2];
+            ct++;
+        }
 
     }
     public static bool checker(){
@@ -130,19 +139,19 @@ namespace GameManager{
     }
 
     public static bool move(int index){
-        if(Input.GetKeyDown(KeyCode.LeftArrow)){
+        if(blocklist[index][0]-1 >= originBlock[index][0]-1 && Input.GetKeyDown(KeyCode.LeftArrow)){
             blocklist[index][0]--;
             return true;
         }
-        if(Input.GetKeyDown(KeyCode.RightArrow)){
+        if(blocklist[index][0]+1 <= originBlock[index][0]+1 && Input.GetKeyDown(KeyCode.RightArrow)){
             blocklist[index][0]++;
             return true;
         }
-        if(Input.GetKeyDown(KeyCode.DownArrow)){
+        if(blocklist[index][1]-1 >= originBlock[index][1]-1 && Input.GetKeyDown(KeyCode.DownArrow)){
             blocklist[index][1]--;
             return true;
         }
-        if(Input.GetKeyDown(KeyCode.UpArrow)){
+        if(blocklist[index][1]+1 <= originBlock[index][1]+1 && Input.GetKeyDown(KeyCode.UpArrow)){
             blocklist[index][1]++;
             return true;
         }

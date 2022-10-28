@@ -16,7 +16,7 @@ public class MapGenerator : MonoBehaviour
 
     }
 
-
+    
 
     // Update is called once per frame
     void Update()
@@ -26,6 +26,9 @@ public class MapGenerator : MonoBehaviour
             for(int j = GameManager.GameManager.Ybound[0]; j <= GameManager.GameManager.Ybound[1]; j++){
                 tile.SetTile(new Vector3Int(i,j,0),Resources.Load<Tile>("Tile-test"));
             }
+        }
+        foreach(int[] block in GameManager.GameManager.originBlock){
+            tile.SetTile(new Vector3Int(block[0], block[1],0), Resources.Load<Tile>("WallTest"));
         }
         foreach(int[] block in GameManager.GameManager.blocklist){
             //switch(block[2]){
@@ -43,6 +46,7 @@ public class MapGenerator : MonoBehaviour
                     //break;
             //}
             tile.SetTile(new Vector3Int(block[0], block[1],0), Resources.Load<Tile>("TestBlock"));
+            
         }
         foreach(int[] block in GameManager.GameManager.walllist){
             tile.SetTile(new Vector3Int(block[0], block[1],0), Resources.Load<Tile>("WallTest"));
