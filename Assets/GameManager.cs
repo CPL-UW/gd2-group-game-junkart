@@ -8,7 +8,7 @@ namespace GameManager{
 {   
     public static int[] Xbound = new int[]{-7,7};
     public static int[] Ybound = new int[]{-7,7};
-    /* 0: red, 1: pink, 2: green, 3: yellow */
+    /* 0: red, 1: blue, 2: green, 3: yellow */
     /* block: int[]{Xpos, Ypos, Color} */
     public static int[][] blocklist = {new int[]{1,1,2}, new int[]{-1,1,1}, new int[]{-3,1,0}, new int[]{3,1,3}, new int[]{-1,-2,2}, new int[]{1,-2,0}, new int[]{-1,-4,1}, new int[]{1,-4,3}};
     
@@ -54,7 +54,7 @@ namespace GameManager{
             *                           \/
             **/
             //color = new System.Random().Next(0,4);
-            color = 0;
+            //color = 0;
             if(color != -1){
                 //Debug.Log(color);
                 tmpblock = new ArrayList();
@@ -75,6 +75,9 @@ namespace GameManager{
                     // GameObject.Find("BlockPointer").GetComponent<Transform>().position = position;
                     //cursor(tmpblock, counter);
                 //}
+            }else{
+                //checker();
+                return false;
             }
             
             if(Input.GetKeyDown(KeyCode.Return)){
@@ -113,7 +116,7 @@ namespace GameManager{
             *                         \ || /
             *                           \/
             **/                
-                avatar_index = new System.Random().Next(1,4);
+                //avatar_index = new System.Random().Next(1,4);
                 color = -1;
                 tmpblock = null;
                 //counter++;
@@ -121,6 +124,7 @@ namespace GameManager{
                 cursored=false;
                 index = 0;
                 avatar_index=0;
+                color = -1;
                 return true;
             }
             }
