@@ -102,7 +102,7 @@ namespace GameManager{
                     }   
                 }
             }else{
-                Debug.Log(index);
+                //Debug.Log(index);
                 if( cursor(tmpblock, counter) && move(index) &&  cursor(tmpblock, counter)){
                 //Debug.Log(blocklist[0][0]/2f+"  "+blocklist[0][1]/2f);
                 step = 3;
@@ -120,6 +120,7 @@ namespace GameManager{
                 round++;
                 cursored=false;
                 index = 0;
+                avatar_index=0;
                 return true;
             }
             }
@@ -160,14 +161,17 @@ namespace GameManager{
     // Update is called once per frame
     void Update()
     {   
+        
         if(starter){
             Debug.Log("start");
-            avatar_index = new System.Random().Next(1,4);
+            //avatar_index = D3.D3.OnMouseDown();
+            //avatar_index = new System.Random().Next(1,4);
+            //Debug.Log(avatar_index);
             switch(avatar_index){
-                case 1:
+                case 2:
                     GameObject.Find("Avatar_1").GetComponent<CharacterController.CharacterController>().move();
                     break;
-                case 2:
+                case 1:
                     GameObject.Find("Avatar_2").GetComponent<CharacterController.CharacterController>().move();
                     break;
                 case 3:
@@ -182,10 +186,10 @@ namespace GameManager{
             checker();    
         }else{
             switch(avatar_index){
-                case 1:
+                case 2:
                     GameObject.Find("Avatar_1").GetComponent<CharacterController.CharacterController>().move();
                     break;
-                case 2:
+                case 1:
                     GameObject.Find("Avatar_2").GetComponent<CharacterController.CharacterController>().move();
                     break;
                 case 3:

@@ -24,11 +24,11 @@ public class MapGenerator : MonoBehaviour
         Tilemap tile = GameObject.Find("Tilemap_1").GetComponent<Tilemap>();
         for(int i = GameManager.GameManager.Xbound[0]; i <= GameManager.GameManager.Xbound[1]; i++){
             for(int j = GameManager.GameManager.Ybound[0]; j <= GameManager.GameManager.Ybound[1]; j++){
-                tile.SetTile(new Vector3Int(i,j,0),Resources.Load<Tile>("Tile-test"));
+                tile.SetTile(new Vector3Int(i, j, 0),Resources.Load<Tile>("Bricks"));
             }
         }
         foreach(int[] block in GameManager.GameManager.originBlock){
-            tile.SetTile(new Vector3Int(block[0], block[1],0), Resources.Load<Tile>("WallTest"));
+            tile.SetTile(new Vector3Int(block[0], block[1], 0), Resources.Load<Tile>("WallTest"));
         }
         foreach(int[] block in GameManager.GameManager.blocklist){
             //switch(block[2]){
@@ -45,11 +45,11 @@ public class MapGenerator : MonoBehaviour
                     //tile.SetTile(new Vector3Int(block[0], block[1],0), Resources.Load<Tile>("YELLOWBLOCK"));
                     //break;
             //}
-            tile.SetTile(new Vector3Int(block[0], block[1],0), Resources.Load<Tile>("TestBlock"));
+            tile.SetTile(new Vector3Int(block[0], block[1], 0), Resources.Load<Tile>("TestBlock"));
             
         }
         foreach(int[] block in GameManager.GameManager.walllist){
-            tile.SetTile(new Vector3Int(block[0], block[1],0), Resources.Load<Tile>("WallTest"));
+            tile.SetTile(new Vector3Int(block[0], block[1], 0), Resources.Load<Tile>("WallTest"));
         }
         //Debug.Log("aaaa");
     }
