@@ -26,6 +26,7 @@ namespace GameManager{
     public static bool cursored = false;
     public static int index = 0;
     public static int[][] originBlock;
+    public static float[] red_panda = new float[]{0,-1.5f};
     // Start is called before the first frame update
     void Start()
     {
@@ -125,6 +126,10 @@ namespace GameManager{
                 index = 0;
                 avatar_index=0;
                 color = -1;
+                if(round > 10){
+                    Debug.Log("p2 win!");
+                    GameObject.Find("p2wins").GetComponent<Transform>().position = new Vector3(0,0,1);
+                }
                 return true;
             }
             }

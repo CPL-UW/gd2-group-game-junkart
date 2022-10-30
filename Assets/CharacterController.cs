@@ -88,6 +88,12 @@ public class CharacterController : MonoBehaviour
         if(done == 2){
             GameManager.GameManager.step--;
             transform.position = position;
+            if(position.x == GameManager.GameManager.red_panda[0] && position.y == GameManager.GameManager.red_panda[1]){
+                Debug.Log("p1 win!");
+                GameObject.Find("p1wins").GetComponent<Transform>().position = new Vector3(0,0,1);
+                Application.Quit();
+                //UnityEditor.EditorApplication.isPlaying = false;
+            }
             //Debug.Log(position.x+" : "+ position.y);
         }
         else if(done==0){
