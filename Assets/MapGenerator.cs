@@ -27,7 +27,10 @@ public class MapGenerator : MonoBehaviour
                 tile.SetTile(new Vector3Int(i, j, 0),Resources.Load<Tile>("Bricks"));
             }
         }
-        foreach(int[] block in GameManager.GameManager.originBlock){
+        // foreach(int[] block in GameManager.GameManager.originBlock){
+        //     tile.SetTile(new Vector3Int(block[0], block[1], 0), Resources.Load<Tile>("WallTest"));
+        // }
+        foreach(int[] block in GameManager.GameManager.walllist){
             tile.SetTile(new Vector3Int(block[0], block[1], 0), Resources.Load<Tile>("WallTest"));
         }
         foreach(int[] block in GameManager.GameManager.blocklist){
@@ -48,9 +51,7 @@ public class MapGenerator : MonoBehaviour
             tile.SetTile(new Vector3Int(block[0], block[1], 0), Resources.Load<Tile>("TestBlock"));
             
         }
-        foreach(int[] block in GameManager.GameManager.walllist){
-            tile.SetTile(new Vector3Int(block[0], block[1], 0), Resources.Load<Tile>("WallTest"));
-        }
+
         //Debug.Log("aaaa");
     }
 }
