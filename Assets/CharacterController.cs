@@ -7,10 +7,13 @@ using GameManager;
 namespace CharacterController{
 public class CharacterController : MonoBehaviour
 {
-    public static float speed = 0.5f;
+    public float speed = 0.5f;
     
     // Control the moves
     public void move(){
+        if(speed == 0f){
+            return;
+        }
             Vector2 position = transform.position;
             int done = 1;
             if(Input.GetKeyDown(KeyCode.A)){
@@ -89,10 +92,8 @@ public class CharacterController : MonoBehaviour
             GameManager.GameManager.step--;
             transform.position = position;
             if(position.x == GameManager.GameManager.red_panda[0] && position.y == GameManager.GameManager.red_panda[1]){
-                Debug.Log("p1 win!");
-                GameObject.Find("p1wins").GetComponent<Transform>().position = new Vector3(0,0,1);
-                Application.Quit();
-                //UnityEditor.EditorApplication.isPlaying = false;
+                GameManager.GameManager.win++;
+                speed=0f;
             }
             //Debug.Log(position.x+" : "+ position.y);
         }

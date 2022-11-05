@@ -27,6 +27,7 @@ namespace GameManager{
     public static int index = 0;
     public static int[][] originBlock;
     public static float[] red_panda = new float[]{0,-1.5f};
+    public static int win = 0;
     // Start is called before the first frame update
     void Start()
     {
@@ -170,7 +171,12 @@ namespace GameManager{
     // Update is called once per frame
     void Update()
     {   
-        
+        if(win == 2){
+            Debug.Log("p1 win!");
+            GameObject.Find("p1wins").GetComponent<Transform>().position = new Vector3(0,0,1);
+            Application.Quit();
+            //UnityEditor.EditorApplication.isPlaying = false;
+        }
         if(starter){
             Debug.Log("start");
             //avatar_index = D3.D3.OnMouseDown();
