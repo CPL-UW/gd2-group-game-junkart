@@ -11,7 +11,7 @@ namespace GameManager{
     /* 0: red, 1: blue, 2: green, 3: yellow */
     /* block: int[]{Xpos, Ypos, Color} */
     public static int[][] blocklist = {new int[]{1,1,2}, new int[]{-1,1,1}, new int[]{-3,1,0}, new int[]{3,1,3}, new int[]{-1,-2,2}, new int[]{1,-2,0}, new int[]{-1,-4,1}, new int[]{1,-4,3}};
-    
+    public static int[][] originlist = {new int[]{1,1,2}, new int[]{-1,1,1}, new int[]{-3,1,0}, new int[]{3,1,3}, new int[]{-1,-2,2}, new int[]{1,-2,0}, new int[]{-1,-4,1}, new int[]{1,-4,3}};
     public static int[][] walllist = {new int[]{-3,-6}, new int[]{-2,-6}, new int[]{-1,-6}, new int[]{0,-6}, new int[]{1,-6}, new int[]{2,-6}, new int[]{3,-6},
                                     new int[]{-4,-6}, new int[]{-4,-5}, new int[]{-4,-5}, new int[]{-4,-4}, new int[]{-4,-3}, new int[]{-4,-2}, new int[]{-5,-2}, new int[]{-5,-1}, new int[]{-5, 0}, new int[]{-5,1}, new int[]{-5,2}, new int[]{-5,3}, new int[]{-5,4}, new int[]{-5,5}, 
                                     new int[]{4,-6}, new int[]{4,-5}, new int[]{4,-5}, new int[]{4,-4}, new int[]{4,-3}, new int[]{4,-2}, new int[]{5,-2}, new int[]{5,-1}, new int[]{5, 0}, new int[]{5,1}, new int[]{5,2}, new int[]{5,3}, new int[]{5,4}, new int[]{5,5}, 
@@ -45,9 +45,15 @@ namespace GameManager{
     public static bool checker(){
         
         if(step == 0){
-
-
-            
+            //blockhelper = 1;
+            //blocklist = originlist;
+            for(int i = 0; i < blocklist.Length; i++){
+                blocklist[i][0] = originlist[i][0];
+                blocklist[i][1] = originlist[i][1];   
+            }
+             Vector2 v = GameObject.Find("BlockPointer").GetComponent<Transform>().position;
+            v.x = 100;
+            GameObject.Find("BlockPointer").GetComponent<Transform>().position = v;
             /**
             *
             *   Trigger for random generating colored dice, goto line 36
