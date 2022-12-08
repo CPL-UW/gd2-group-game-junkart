@@ -11,6 +11,8 @@ public class backbutton : MonoBehaviour
     }
     void OnMouseDown() {
         UnityEngine.SceneManagement.SceneManager.LoadScene("menu");
+        // GameObject.Find("How to play scene").GetComponent<Transform>().position = new Vector3(100,0,1);
+        // GameObject.Find("start").GetComponent<Transform>().position = new Vector3(100,0,1);
     }
     // Update is called once per frame
     void Update()
