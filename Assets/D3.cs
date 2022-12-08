@@ -13,6 +13,16 @@ namespace D3{
         //btn.onClick.AddListener(TaskOnClick);
         }
         void OnMouseDown() {
+            
+            //Debug.Log("aaaaaa");
+            // return i;
+            //return true;
+            
+        }
+        // Update is called once per frame
+        void Update()
+        {
+        if(Input.GetKeyDown(KeyCode.J)){
             Vector3 newRotation = new Vector3(0,0,0);
             GameManager.GameManager.avatar_index = new System.Random().Next(1,4);
             switch(GameManager.GameManager.avatar_index){
@@ -31,15 +41,7 @@ namespace D3{
             }
             transform.eulerAngles = newRotation;
             Debug.Log(GameManager.GameManager.avatar_index);
-            //Debug.Log("aaaaaa");
-            // return i;
-            //return true;
-            
         }
-        // Update is called once per frame
-        void Update()
-        {
-        
         }
     }
 } 

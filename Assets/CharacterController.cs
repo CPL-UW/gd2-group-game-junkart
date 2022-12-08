@@ -11,12 +11,14 @@ public class CharacterController : MonoBehaviour
     
     // Control the moves
     public void move(){
+        
         if(speed == 0f){
             return;
         }
             Vector2 position = transform.position;
+            GameObject.Find("char_indicator").GetComponent<Transform>().position = new Vector3(position.x+0.25f,position.y+0.6f,1);
             int done = 1;
-            if(Input.GetKeyDown(KeyCode.A)){
+            if((Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.LeftArrow))){
                 done = 2;
             foreach(int[] block in GameManager.GameManager.blocklist){
                 if(position.y == (float)block[1]/2f   && position.x-speed == (float)block[0]/2f){                  
@@ -35,7 +37,7 @@ public class CharacterController : MonoBehaviour
             position.x -= speed;
 
         }
-        if(Input.GetKeyDown(KeyCode.D)){
+        if((Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.RightArrow))){
             done = 2;
             foreach(int[] block in GameManager.GameManager.blocklist){
                 if(position.y == (float)block[1]/2f && position.x+speed == (float)block[0]/2f){
@@ -52,7 +54,7 @@ public class CharacterController : MonoBehaviour
             }
             position.x += speed;
         }
-        if(Input.GetKeyDown(KeyCode.W)){
+        if((Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow))){
             done = 2;
             foreach(int[] block in GameManager.GameManager.blocklist){
                 if(position.x == (float)block[0]/2f && position.y+speed == (float)block[1]/2f){
@@ -70,7 +72,7 @@ public class CharacterController : MonoBehaviour
             position.y += speed;
             
         }
-        if(Input.GetKeyDown(KeyCode.S)){
+        if((Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.DownArrow))){
             done = 2;
             foreach(int[] block in GameManager.GameManager.blocklist){
                 if(position.x == (float)block[0]/2f && position.y-speed == (float)block[1]/2f){
@@ -91,6 +93,7 @@ public class CharacterController : MonoBehaviour
         if(done == 2){
             GameManager.GameManager.step--;
             transform.position = position;
+            GameObject.Find("char_indicator").GetComponent<Transform>().position = new Vector3(position.x+0.25f,position.y+0.6f,1);
             if(position.x == GameManager.GameManager.red_panda[0] && position.y == GameManager.GameManager.red_panda[1]){
                 GameManager.GameManager.win++;
                 speed=0f;

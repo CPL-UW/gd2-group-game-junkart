@@ -8,14 +8,23 @@ namespace GameManager{
 {   
     public static int[] Xbound = new int[]{-7,7};
     public static int[] Ybound = new int[]{-7,7};
-    /* 0: red, 1: blue, 2: green, 3: yellow */
+    /* 0: blue, 1: red, 2: green, 3: yellow */
     /* block: int[]{Xpos, Ypos, Color} */
-    public static int[][] blocklist = {new int[]{1,1,2}, new int[]{-1,1,1}, new int[]{-3,1,0}, new int[]{3,1,3}, new int[]{-1,-2,2}, new int[]{1,-2,0}, new int[]{-1,-4,1}, new int[]{1,-4,3}};
-    public static int[][] originlist = {new int[]{1,1,2}, new int[]{-1,1,1}, new int[]{-3,1,0}, new int[]{3,1,3}, new int[]{-1,-2,2}, new int[]{1,-2,0}, new int[]{-1,-4,1}, new int[]{1,-4,3}};
+    public static int[][] blocklist = {new int[]{1,0,2}, new int[]{-1,0,1}, new int[]{-3,0,0}, new int[]{3,0,3}, new int[]{-1,-2,2}, new int[]{1,-2,0}, new int[]{-1,-4,1}, new int[]{1,-4,3}};
+    public static int[][] originlist = {new int[]{1,0,2}, new int[]{-1,0,1}, new int[]{-3,0,0}, new int[]{3,0,3}, new int[]{-1,-2,2}, new int[]{1,-2,0}, new int[]{-1,-4,1}, new int[]{1,-4,3}};
     public static int[][] walllist = {new int[]{-3,-6}, new int[]{-2,-6}, new int[]{-1,-6}, new int[]{0,-6}, new int[]{1,-6}, new int[]{2,-6}, new int[]{3,-6},
                                     new int[]{-4,-6}, new int[]{-4,-5}, new int[]{-4,-5}, new int[]{-4,-4}, new int[]{-4,-3}, new int[]{-4,-2}, new int[]{-5,-2}, new int[]{-5,-1}, new int[]{-5, 0}, new int[]{-5,1}, new int[]{-5,2}, new int[]{-5,3}, new int[]{-5,4}, new int[]{-5,5}, 
                                     new int[]{4,-6}, new int[]{4,-5}, new int[]{4,-5}, new int[]{4,-4}, new int[]{4,-3}, new int[]{4,-2}, new int[]{5,-2}, new int[]{5,-1}, new int[]{5, 0}, new int[]{5,1}, new int[]{5,2}, new int[]{5,3}, new int[]{5,4}, new int[]{5,5}, 
-                                    new int[]{-4,5}, new int[]{-3,5}, new int[]{-2,5}, new int[]{-1,5}, new int[]{0,5}, new int[]{1,5}, new int[]{2,5}, new int[]{3,5}, new int[]{4,5}, new int[]{1,1,2}, new int[]{-1,1,1}, new int[]{-3,1,0}, new int[]{3,1,3}, new int[]{-1,-2,2}, new int[]{1,-2,0}, new int[]{-1,-4,1}, new int[]{1,-4,3}};
+                                    new int[]{-4,5}, new int[]{-3,5}, new int[]{-2,5}, new int[]{-1,5}, new int[]{0,5}, new int[]{1,5}, new int[]{2,5}, new int[]{3,5}, new int[]{4,5}, new int[]{1,0,2}, new int[]{-1,0,1}, new int[]{-3,0,0}, new int[]{3,0,3}, new int[]{-1,-2,2}, new int[]{1,-2,0}, new int[]{-1,-4,1}, new int[]{1,-4,3}};
+    
+    
+    // public static int[][] blocklist = {new int[]{-1,-1,2}, new int[]{0,3,2}, new int[]{2,-2,2}, new int[]{-1,1,0}, new int[]{3,0,0}, new int[]{-2,-2,0}, new int[]{1,-1,1}, new int[]{2,2,1}, new int[]{-3,0,1}, new int[]{1,1,3}, new int[]{-2,2,3}, new int[]{0,-3,3}};
+    // public static int[][] originlist = { new int[] { -1, -1, 2 }, new int[] { 0, -3, 2 }, new int[] { 2, -2, 2 }, new int[] { -1, 1, 0 }, new int[] { 3, 0, 0 }, new int[] { -2, -2, 0 }, new int[] { 1, -1, 1 }, new int[] { 2, 2, 1 }, new int[] { -3, 0, 1 }, new int[] { 1, 1, 3 }, new int[] { -2, 2, 3 }, new int[] { 0, -3, 3 } };
+    // public static int[][] walllist = {new int[]{-5,-5}, new int[]{-4,-5}, new int[]{-3,-5}, new int[]{-2,-5}, new int[]{-1,-5}, new int[]{0,-5}, new int[]{1,-5}, new int[]{2,-5}, new int[]{3,-5}, new int[]{4,-5}, 
+    //         new int[]{4,-4}, new int[]{5,-4}, new int[]{5,-3}, new int[]{5,-2}, new int[]{5,-1}, new int[]{5,0}, new int[]{5,1}, new int[]{5,2}, new int[]{5,3}, new int[]{5,4}, new int[]{5,5},
+    //         new int[]{4,5}, new int[]{3,5}, new int[]{2,5}, new int[]{1,5}, new int[]{0,5}, new int[]{-1,5}, new int[]{-2,5}, new int[]{-3,5}, new int[]{-4,5}, new int[]{-4,4}, new int[]{-5,4},
+    //         new int[]{-5,3}, new int[]{-5,2}, new int[]{-5,1}, new int[]{-5,0}, new int[]{-5,-1}, new int[]{-5,-2}, new int[]{-5,-3}, new int[]{-5,-4}};
+    
     public static int round;
     public static int step = 3;
     public static int avatar_index;
@@ -28,6 +37,7 @@ namespace GameManager{
     public static int[][] originBlock;
     public static float[] red_panda = new float[]{0,-1.5f};
     public static int win = 0;
+    public static int cursed = 0;
     // Start is called before the first frame update
     void Start()
     {
@@ -43,7 +53,9 @@ namespace GameManager{
 
     }
     public static bool checker(){
-        
+        GameObject.Find("Spies Turn Button").GetComponent<Transform>().position = new Vector3(-50,1,1);
+        GameObject.Find("Scientists Turn Button").GetComponent<Transform>().position = new Vector3(5.5f,1,1);
+        GameObject.Find("char_indicator").GetComponent<Transform>().position = new Vector3(100,0,1);
         if(step == 0){
             //blockhelper = 1;
             //blocklist = originlist;
@@ -88,7 +100,7 @@ namespace GameManager{
                 return false;
             }
             
-            if(Input.GetKeyDown(KeyCode.Return)){
+            if(Input.GetKeyDown(KeyCode.KeypadEnter)){
                 cursored = true;
                 Vector2 position = GameObject.Find("BlockPointer").GetComponent<Transform>().position;
                 for(int i = 0; i< blocklist.Length; i++){
@@ -133,6 +145,8 @@ namespace GameManager{
                 index = 0;
                 avatar_index=0;
                 color = -1;
+                cursed = 0;
+                GameObject.Find("Scientists Turn Button").GetComponent<Transform>().position = new Vector3(50,1,1);
                 if(round > 10){
                     Debug.Log("p2 win!");
                     GameObject.Find("p2wins").GetComponent<Transform>().position = new Vector3(0,0,1);
@@ -156,19 +170,19 @@ namespace GameManager{
     }
 
     public static bool move(int index){
-        if(blocklist[index][0]-1 >= originBlock[index][0]-1 && Input.GetKeyDown(KeyCode.LeftArrow)){
+        if(blocklist[index][0]-1 >= originBlock[index][0]-1 && (Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.LeftArrow))){
             blocklist[index][0]--;
             return true;
         }
-        if(blocklist[index][0]+1 <= originBlock[index][0]+1 && Input.GetKeyDown(KeyCode.RightArrow)){
+        if(blocklist[index][0]+1 <= originBlock[index][0]+1 && (Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.RightArrow))){
             blocklist[index][0]++;
             return true;
         }
-        if(blocklist[index][1]-1 >= originBlock[index][1]-1 && Input.GetKeyDown(KeyCode.DownArrow)){
+        if(blocklist[index][1]-1 >= originBlock[index][1]-1 && (Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.DownArrow))){
             blocklist[index][1]--;
             return true;
         }
-        if(blocklist[index][1]+1 <= originBlock[index][1]+1 && Input.GetKeyDown(KeyCode.UpArrow)){
+        if(blocklist[index][1]+1 <= originBlock[index][1]+1 && (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow))){
             blocklist[index][1]++;
             return true;
         }
@@ -188,6 +202,7 @@ namespace GameManager{
             //avatar_index = D3.D3.OnMouseDown();
             //avatar_index = new System.Random().Next(1,4);
             //Debug.Log(avatar_index);
+            GameObject.Find("Spies Turn Button").GetComponent<Transform>().position = new Vector3(-5,1,1);
             switch(avatar_index){
                 case 2:
                     GameObject.Find("Avatar_1").GetComponent<CharacterController.CharacterController>().move();
@@ -199,13 +214,14 @@ namespace GameManager{
                     GameObject.Find("Avatar_3").GetComponent<CharacterController.CharacterController>().move();
                     break;
             }
-            
+            //GameObject.Find("Spies Turn Button").GetComponent<Transform>().position = new Vector3(-50,1,1);
             starter = false;
         }
         if(step == 0 || Input.GetKeyDown(KeyCode.Space)){
             step = 0;
             checker();    
         }else{
+            GameObject.Find("Spies Turn Button").GetComponent<Transform>().position = new Vector3(-5,1,1);
             switch(avatar_index){
                 case 2:
                     GameObject.Find("Avatar_1").GetComponent<CharacterController.CharacterController>().move();
@@ -217,6 +233,7 @@ namespace GameManager{
                     GameObject.Find("Avatar_3").GetComponent<CharacterController.CharacterController>().move();
                     break;
             }
+            //GameObject.Find("Spies Turn Button").GetComponent<Transform>().position = new Vector3(-50,1,1);
         }
     }
 }

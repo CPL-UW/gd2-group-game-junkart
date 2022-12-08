@@ -27,6 +27,11 @@ public class MapGenerator : MonoBehaviour
                 tile.SetTile(new Vector3Int(i, j, 0),Resources.Load<Tile>("Tile1_Base"));
             }
         }
+        for(int i = 1; i < 11; i++){
+            GameObject.Find("MovesLeft"+i).GetComponent<Transform>().position = new Vector3(100,0,1);
+            //GameObject.Find("MovesLeft"+i).GetComponent<Transform>().scale = new Vector3(1,1,1);
+        }
+        GameObject.Find("MovesLeft"+(11 - GameManager.GameManager.round)).GetComponent<Transform>().position = new Vector3(-5,3,1);
         // foreach(int[] block in GameManager.GameManager.originBlock){
         //     tile.SetTile(new Vector3Int(block[0], block[1], 0), Resources.Load<Tile>("WallTest"));
         // }

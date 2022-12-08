@@ -3,13 +3,13 @@ fetchPreview = true
 defaultFlags = 0
 keepOpen = false
 queryFolder = "Assets"
-onBoardingDoNotAskAgain = false
+onBoardingDoNotAskAgain = true
 showPackageIndexes = false
 showStatusBar = false
 scopes = {
-	"last_search.DD5CDD96" = ""
+	"last_search.DD5CDD96" = "scene"
 	"OpenInspectorPreview.DD5CDD96" = "0"
-	"currentGroup.DD5CDD96" = "scene"
+	"currentGroup.DD5CDD96" = "all"
 }
 providers = {
 	adb = {
