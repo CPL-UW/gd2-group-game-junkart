@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using GameManager;
 public class level1button : MonoBehaviour
 {
     // Start is called before the first frame update
@@ -9,8 +9,10 @@ public class level1button : MonoBehaviour
     {
         
     }
-    
+
     void OnMouseDown() {
+        Debug.Log("1");
+        GameManager.GameManager.level = 1;
         UnityEngine.SceneManagement.SceneManager.LoadScene("level_1");
     }
 

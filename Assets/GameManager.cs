@@ -10,20 +10,26 @@ namespace GameManager{
     public static int[] Ybound = new int[]{-7,7};
     /* 0: blue, 1: red, 2: green, 3: yellow */
     /* block: int[]{Xpos, Ypos, Color} */
+    public static int level;
     public static int[][] blocklist = {new int[]{1,0,2}, new int[]{-1,0,1}, new int[]{-3,0,0}, new int[]{3,0,3}, new int[]{-1,-2,2}, new int[]{1,-2,0}, new int[]{-1,-4,1}, new int[]{1,-4,3}};
     public static int[][] originlist = {new int[]{1,0,2}, new int[]{-1,0,1}, new int[]{-3,0,0}, new int[]{3,0,3}, new int[]{-1,-2,2}, new int[]{1,-2,0}, new int[]{-1,-4,1}, new int[]{1,-4,3}};
     public static int[][] walllist = {new int[]{-3,-6}, new int[]{-2,-6}, new int[]{-1,-6}, new int[]{0,-6}, new int[]{1,-6}, new int[]{2,-6}, new int[]{3,-6},
-                                    new int[]{-4,-6}, new int[]{-4,-5}, new int[]{-4,-5}, new int[]{-4,-4}, new int[]{-4,-3}, new int[]{-4,-2}, new int[]{-5,-2}, new int[]{-5,-1}, new int[]{-5, 0}, new int[]{-5,1}, new int[]{-5,2}, new int[]{-5,3}, new int[]{-5,4}, new int[]{-5,5}, 
-                                    new int[]{4,-6}, new int[]{4,-5}, new int[]{4,-5}, new int[]{4,-4}, new int[]{4,-3}, new int[]{4,-2}, new int[]{5,-2}, new int[]{5,-1}, new int[]{5, 0}, new int[]{5,1}, new int[]{5,2}, new int[]{5,3}, new int[]{5,4}, new int[]{5,5}, 
-                                    new int[]{-4,5}, new int[]{-3,5}, new int[]{-2,5}, new int[]{-1,5}, new int[]{0,5}, new int[]{1,5}, new int[]{2,5}, new int[]{3,5}, new int[]{4,5}, new int[]{1,0,2}, new int[]{-1,0,1}, new int[]{-3,0,0}, new int[]{3,0,3}, new int[]{-1,-2,2}, new int[]{1,-2,0}, new int[]{-1,-4,1}, new int[]{1,-4,3}};
-    
-    
-    // public static int[][] blocklist = {new int[]{-1,-1,2}, new int[]{0,3,2}, new int[]{2,-2,2}, new int[]{-1,1,0}, new int[]{3,0,0}, new int[]{-2,-2,0}, new int[]{1,-1,1}, new int[]{2,2,1}, new int[]{-3,0,1}, new int[]{1,1,3}, new int[]{-2,2,3}, new int[]{0,-3,3}};
-    // public static int[][] originlist = { new int[] { -1, -1, 2 }, new int[] { 0, -3, 2 }, new int[] { 2, -2, 2 }, new int[] { -1, 1, 0 }, new int[] { 3, 0, 0 }, new int[] { -2, -2, 0 }, new int[] { 1, -1, 1 }, new int[] { 2, 2, 1 }, new int[] { -3, 0, 1 }, new int[] { 1, 1, 3 }, new int[] { -2, 2, 3 }, new int[] { 0, -3, 3 } };
-    // public static int[][] walllist = {new int[]{-5,-5}, new int[]{-4,-5}, new int[]{-3,-5}, new int[]{-2,-5}, new int[]{-1,-5}, new int[]{0,-5}, new int[]{1,-5}, new int[]{2,-5}, new int[]{3,-5}, new int[]{4,-5}, 
-    //         new int[]{4,-4}, new int[]{5,-4}, new int[]{5,-3}, new int[]{5,-2}, new int[]{5,-1}, new int[]{5,0}, new int[]{5,1}, new int[]{5,2}, new int[]{5,3}, new int[]{5,4}, new int[]{5,5},
-    //         new int[]{4,5}, new int[]{3,5}, new int[]{2,5}, new int[]{1,5}, new int[]{0,5}, new int[]{-1,5}, new int[]{-2,5}, new int[]{-3,5}, new int[]{-4,5}, new int[]{-4,4}, new int[]{-5,4},
-    //         new int[]{-5,3}, new int[]{-5,2}, new int[]{-5,1}, new int[]{-5,0}, new int[]{-5,-1}, new int[]{-5,-2}, new int[]{-5,-3}, new int[]{-5,-4}};
+        new int[]{-4,-6}, new int[]{-4,-5}, new int[]{-4,-5}, new int[]{-4,-4}, new int[]{-4,-3}, new int[]{-4,-2}, new int[]{-5,-2}, new int[]{-5,-1}, new int[]{-5, 0}, new int[]{-5,1}, new int[]{-5,2}, new int[]{-5,3}, new int[]{-5,4}, new int[]{-5,5}, 
+        new int[]{4,-6}, new int[]{4,-5}, new int[]{4,-5}, new int[]{4,-4}, new int[]{4,-3}, new int[]{4,-2}, new int[]{5,-2}, new int[]{5,-1}, new int[]{5, 0}, new int[]{5,1}, new int[]{5,2}, new int[]{5,3}, new int[]{5,4}, new int[]{5,5}, 
+        new int[]{-4,5}, new int[]{-3,5}, new int[]{-2,5}, new int[]{-1,5}, new int[]{0,5}, new int[]{1,5}, new int[]{2,5}, new int[]{3,5}, new int[]{4,5}, new int[]{1,0,2}, new int[]{-1,0,1}, new int[]{-3,0,0}, new int[]{3,0,3}, new int[]{-1,-2,2}, new int[]{1,-2,0}, new int[]{-1,-4,1}, new int[]{1,-4,3}};
+    public static int[][] blocklist_1 = {new int[]{1,0,2}, new int[]{-1,0,1}, new int[]{-3,0,0}, new int[]{3,0,3}, new int[]{-1,-2,2}, new int[]{1,-2,0}, new int[]{-1,-4,1}, new int[]{1,-4,3}};
+    public static int[][] originlist_1 = {new int[]{1,0,2}, new int[]{-1,0,1}, new int[]{-3,0,0}, new int[]{3,0,3}, new int[]{-1,-2,2}, new int[]{1,-2,0}, new int[]{-1,-4,1}, new int[]{1,-4,3}};
+    public static int[][] walllist_1 = {new int[]{-3,-6}, new int[]{-2,-6}, new int[]{-1,-6}, new int[]{0,-6}, new int[]{1,-6}, new int[]{2,-6}, new int[]{3,-6},
+        new int[]{-4,-6}, new int[]{-4,-5}, new int[]{-4,-5}, new int[]{-4,-4}, new int[]{-4,-3}, new int[]{-4,-2}, new int[]{-5,-2}, new int[]{-5,-1}, new int[]{-5, 0}, new int[]{-5,1}, new int[]{-5,2}, new int[]{-5,3}, new int[]{-5,4}, new int[]{-5,5}, 
+        new int[]{4,-6}, new int[]{4,-5}, new int[]{4,-5}, new int[]{4,-4}, new int[]{4,-3}, new int[]{4,-2}, new int[]{5,-2}, new int[]{5,-1}, new int[]{5, 0}, new int[]{5,1}, new int[]{5,2}, new int[]{5,3}, new int[]{5,4}, new int[]{5,5}, 
+        new int[]{-4,5}, new int[]{-3,5}, new int[]{-2,5}, new int[]{-1,5}, new int[]{0,5}, new int[]{1,5}, new int[]{2,5}, new int[]{3,5}, new int[]{4,5}, new int[]{1,0,2}, new int[]{-1,0,1}, new int[]{-3,0,0}, new int[]{3,0,3}, new int[]{-1,-2,2}, new int[]{1,-2,0}, new int[]{-1,-4,1}, new int[]{1,-4,3}};
+
+    public static int[][] blocklist_2 = {new int[]{-1,-1,2}, new int[]{0,3,2}, new int[]{2,-2,2}, new int[]{-1,1,0}, new int[]{3,0,0}, new int[]{-2,-2,0}, new int[]{1,-1,1}, new int[]{2,2,1}, new int[]{-3,0,1}, new int[]{1,1,3}, new int[]{-2,2,3}, new int[]{0,-3,3}};
+    public static int[][] originlist_2 = {new int[] { -1, -1, 2 }, new int[] { 0, 3, 2 }, new int[] { 2, -2, 2 }, new int[] { -1, 1, 0 }, new int[] { 3, 0, 0 }, new int[] { -2, -2, 0 }, new int[] { 1, -1, 1 }, new int[] { 2, 2, 1 }, new int[] { -3, 0, 1 }, new int[] { 1, 1, 3 }, new int[] { -2, 2, 3 }, new int[] { 0, -3, 3 } };
+    public static int[][] walllist_2 = {new int[]{-5,-5}, new int[]{-4,-5}, new int[]{-3,-5}, new int[]{-2,-5}, new int[]{-1,-5}, new int[]{0,-5}, new int[]{1,-5}, new int[]{2,-5}, new int[]{3,-5}, new int[]{4,-5}, 
+        new int[]{4,-4}, new int[]{5,-4}, new int[]{5,-3}, new int[]{5,-2}, new int[]{5,-1}, new int[]{5,0}, new int[]{5,1}, new int[]{5,2}, new int[]{5,3}, new int[]{5,4}, new int[]{5,5},
+        new int[]{4,5}, new int[]{3,5}, new int[]{2,5}, new int[]{1,5}, new int[]{0,5}, new int[]{-1,5}, new int[]{-2,5}, new int[]{-3,5}, new int[]{-4,5}, new int[]{-4,4}, new int[]{-5,4},
+        new int[]{-5,3}, new int[]{-5,2}, new int[]{-5,1}, new int[]{-5,0}, new int[]{-5,-1}, new int[]{-5,-2}, new int[]{-5,-3}, new int[]{-5,-4},new int[]{-1,-1,2}, new int[]{0,3,2}, new int[]{2,-2,2}, new int[]{-1,1,0}, new int[]{3,0,0}, new int[]{-2,-2,0}, new int[]{1,-1,1}, new int[]{2,2,1}, new int[]{-3,0,1}, new int[]{1,1,3}, new int[]{-2,2,3}, new int[]{0,-3,3}};
     
     public static int round;
     public static int step = 3;
@@ -41,6 +47,34 @@ namespace GameManager{
     // Start is called before the first frame update
     void Start()
     {
+        if(level == 1){ 
+            blocklist = null;
+            blocklist = blocklist_1;
+            walllist=null;
+            walllist=walllist_1;
+            originlist=null;
+            originlist=originlist_1;
+            red_panda = null;
+            red_panda = new float[]{0,-1.5f};
+            GameObject.Find("Avatar_1").GetComponent<Transform>().position = new Vector3(0,2,1);
+            GameObject.Find("Avatar_2").GetComponent<Transform>().position = new Vector3(-1,2,1);
+            GameObject.Find("Avatar_3").GetComponent<Transform>().position = new Vector3(1,2,1);
+            GameObject.Find("red_panda").GetComponent<Transform>().position = new Vector3(0,-1.5f,1);
+        }
+        if(level == 2){ 
+            blocklist = null;
+            blocklist = blocklist_2;
+            walllist=null;
+            walllist=walllist_2;
+            originlist=null;
+            originlist=originlist_2;
+            red_panda = null;
+            red_panda = new float[]{0,0};
+            GameObject.Find("Avatar_1").GetComponent<Transform>().position = new Vector3(2,2,1);
+            GameObject.Find("Avatar_2").GetComponent<Transform>().position = new Vector3(-2,-2,1);
+            GameObject.Find("Avatar_3").GetComponent<Transform>().position = new Vector3(1.5f,-1.5f,1);
+            GameObject.Find("red_panda").GetComponent<Transform>().position = new Vector3(0,0,1);
+        }
         round = 1;
         originBlock = new int[blocklist.Length][];
         int ct = 0;
@@ -50,6 +84,21 @@ namespace GameManager{
             // originBlock[ct][2] = block[2];
             ct++;
         }
+
+           
+        //     blocklist = {new int[]{1,0,2}, new int[]{-1,0,1}, new int[]{-3,0,0}, new int[]{3,0,3}, new int[]{-1,-2,2}, new int[]{1,-2,0}, new int[]{-1,-4,1}, new int[]{1,-4,3}};
+        //     originlist = {new int[]{1,0,2}, new int[]{-1,0,1}, new int[]{-3,0,0}, new int[]{3,0,3}, new int[]{-1,-2,2}, new int[]{1,-2,0}, new int[]{-1,-4,1}, new int[]{1,-4,3}};
+        //     walllist = {new int[]{-3,-6}, new int[]{-2,-6}, new int[]{-1,-6}, new int[]{0,-6}, new int[]{1,-6}, new int[]{2,-6}, new int[]{3,-6},
+        //                             new int[]{-4,-6}, new int[]{-4,-5}, new int[]{-4,-5}, new int[]{-4,-4}, new int[]{-4,-3}, new int[]{-4,-2}, new int[]{-5,-2}, new int[]{-5,-1}, new int[]{-5, 0}, new int[]{-5,1}, new int[]{-5,2}, new int[]{-5,3}, new int[]{-5,4}, new int[]{-5,5}, 
+        //                             new int[]{4,-6}, new int[]{4,-5}, new int[]{4,-5}, new int[]{4,-4}, new int[]{4,-3}, new int[]{4,-2}, new int[]{5,-2}, new int[]{5,-1}, new int[]{5, 0}, new int[]{5,1}, new int[]{5,2}, new int[]{5,3}, new int[]{5,4}, new int[]{5,5}, 
+        //                             new int[]{-4,5}, new int[]{-3,5}, new int[]{-2,5}, new int[]{-1,5}, new int[]{0,5}, new int[]{1,5}, new int[]{2,5}, new int[]{3,5}, new int[]{4,5}, new int[]{1,0,2}, new int[]{-1,0,1}, new int[]{-3,0,0}, new int[]{3,0,3}, new int[]{-1,-2,2}, new int[]{1,-2,0}, new int[]{-1,-4,1}, new int[]{1,-4,3}};
+
+        //     blocklist = {new int[]{-1,-1,2}, new int[]{0,3,2}, new int[]{2,-2,2}, new int[]{-1,1,0}, new int[]{3,0,0}, new int[]{-2,-2,0}, new int[]{1,-1,1}, new int[]{2,2,1}, new int[]{-3,0,1}, new int[]{1,1,3}, new int[]{-2,2,3}, new int[]{0,-3,3}};
+        //     originlist = { new int[] { -1, -1, 2 }, new int[] { 0, -3, 2 }, new int[] { 2, -2, 2 }, new int[] { -1, 1, 0 }, new int[] { 3, 0, 0 }, new int[] { -2, -2, 0 }, new int[] { 1, -1, 1 }, new int[] { 2, 2, 1 }, new int[] { -3, 0, 1 }, new int[] { 1, 1, 3 }, new int[] { -2, 2, 3 }, new int[] { 0, -3, 3 } };
+        //     walllist = {new int[]{-5,-5}, new int[]{-4,-5}, new int[]{-3,-5}, new int[]{-2,-5}, new int[]{-1,-5}, new int[]{0,-5}, new int[]{1,-5}, new int[]{2,-5}, new int[]{3,-5}, new int[]{4,-5}, 
+        //     new int[]{4,-4}, new int[]{5,-4}, new int[]{5,-3}, new int[]{5,-2}, new int[]{5,-1}, new int[]{5,0}, new int[]{5,1}, new int[]{5,2}, new int[]{5,3}, new int[]{5,4}, new int[]{5,5},
+        //     new int[]{4,5}, new int[]{3,5}, new int[]{2,5}, new int[]{1,5}, new int[]{0,5}, new int[]{-1,5}, new int[]{-2,5}, new int[]{-3,5}, new int[]{-4,5}, new int[]{-4,4}, new int[]{-5,4},
+        //     new int[]{-5,3}, new int[]{-5,2}, new int[]{-5,1}, new int[]{-5,0}, new int[]{-5,-1}, new int[]{-5,-2}, new int[]{-5,-3}, new int[]{-5,-4}};
 
     }
     public static bool checker(){
@@ -63,7 +112,7 @@ namespace GameManager{
                 blocklist[i][0] = originlist[i][0];
                 blocklist[i][1] = originlist[i][1];   
             }
-             Vector2 v = GameObject.Find("BlockPointer").GetComponent<Transform>().position;
+            Vector2 v = GameObject.Find("BlockPointer").GetComponent<Transform>().position;
             v.x = 100;
             GameObject.Find("BlockPointer").GetComponent<Transform>().position = v;
             /**
@@ -191,6 +240,7 @@ namespace GameManager{
     // Update is called once per frame
     void Update()
     {   
+        //if(level == 1){Debug.Log("lvel1");}
         if(win == 2){
             Debug.Log("p1 win!");
             GameObject.Find("p1wins").GetComponent<Transform>().position = new Vector3(0,0,1);
