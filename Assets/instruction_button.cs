@@ -15,6 +15,7 @@ public class instruction_button : MonoBehaviour
         GameObject.Find("start").GetComponent<Transform>().position = new Vector3(100,0,1);
         GameObject.Find("How to Play button").GetComponent<Transform>().position = new Vector3(100,0,1);
         GameObject.Find("Back button").GetComponent<Transform>().position = new Vector3(7.8f,3.59f,1);
+        GameObject.Find("story button").GetComponent<Transform>().position = new Vector3(100,0,1);
     }
 
     // Update is called once per frame
