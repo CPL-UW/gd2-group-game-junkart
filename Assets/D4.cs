@@ -21,7 +21,7 @@ public class D4 : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-     if(Input.GetKeyDown(KeyCode.Keypad0)){
+     if(Input.GetKeyDown(KeyCode.KeypadEnter)){
                  if(GameManager.GameManager.cursed == 0){
             Vector3 newRotation = new Vector3(0,0,0);
             GameManager.GameManager.color = new System.Random().Next(0,4);
