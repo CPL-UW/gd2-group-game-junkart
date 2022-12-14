@@ -149,7 +149,7 @@ namespace GameManager{
                 return false;
             }
             
-            if(Input.GetKeyDown(KeyCode.Keypad1)){
+            if(Input.GetKeyDown(KeyCode.KeypadEnter)){
                 cursored = true;
                 Vector2 position = GameObject.Find("BlockPointer").GetComponent<Transform>().position;
                 for(int i = 0; i< blocklist.Length; i++){
