@@ -244,7 +244,6 @@ namespace GameManager{
         if(win == 2){
             Debug.Log("p1 win!");
             GameObject.Find("p1wins").GetComponent<Transform>().position = new Vector3(0,0,1);
-            Application.Quit();
             //UnityEditor.EditorApplication.isPlaying = false;
         }
         if(starter){

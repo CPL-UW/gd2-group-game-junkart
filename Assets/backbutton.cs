@@ -13,6 +13,9 @@ public class backbutton : MonoBehaviour
         UnityEngine.SceneManagement.SceneManager.LoadScene("menu");
         GameManager.GameManager.level = 0;
         storybutton.story = 1;
+        GameManager.GameManager.win = 0;
+        GameObject.Find("p1wins").GetComponent<Transform>().position = new Vector3(100,0,1);
+        GameObject.Find("p2wins").GetComponent<Transform>().position = new Vector3(100,0,1);
         // GameObject.Find("How to play scene").GetComponent<Transform>().position = new Vector3(100,0,1);
         // GameObject.Find("start").GetComponent<Transform>().position = new Vector3(100,0,1);
     }
