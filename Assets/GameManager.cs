@@ -59,7 +59,7 @@ namespace GameManager{
             GameObject.Find("Avatar_1").GetComponent<Transform>().position = new Vector3(0,2,1);
             GameObject.Find("Avatar_2").GetComponent<Transform>().position = new Vector3(-1,2,1);
             GameObject.Find("Avatar_3").GetComponent<Transform>().position = new Vector3(1,2,1);
-            GameObject.Find("red_panda").GetComponent<Transform>().position = new Vector3(0,-1.5f,1);
+            GameObject.Find("red_panda").GetComponent<Transform>().position = new Vector3(0.25f,-1.25f,1);
         }
         if(level == 2){ 
             blocklist = null;
@@ -73,7 +73,7 @@ namespace GameManager{
             GameObject.Find("Avatar_1").GetComponent<Transform>().position = new Vector3(2,2,1);
             GameObject.Find("Avatar_2").GetComponent<Transform>().position = new Vector3(-2,-2,1);
             GameObject.Find("Avatar_3").GetComponent<Transform>().position = new Vector3(1.5f,-1.5f,1);
-            GameObject.Find("red_panda").GetComponent<Transform>().position = new Vector3(0,0,1);
+            GameObject.Find("red_panda").GetComponent<Transform>().position = new Vector3(0.25f,0.25f,1);
         }
         round = 1;
         originBlock = new int[blocklist.Length][];
